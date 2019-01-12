@@ -12,7 +12,7 @@ public class MatrixMathematics {
 	
 	
 	/**
-	 * Determinant of a square matrixx
+	 * Determinant of a sqeeuare matrixx
 	 * The following function find test test the determinant in a recursively.
 	 * @param matrix
 	 * @return
