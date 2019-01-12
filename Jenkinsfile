@@ -17,7 +17,6 @@ pipeline {
       parallel {
         stage('Code analysis') {
           steps {
-
            sh '''/Applications/sonarScanner/bin/sonar-scanner'''
            waitForQualityGate true
           }
