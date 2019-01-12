@@ -25,8 +25,9 @@ pipeline {
       parallel {
         stage('Code analysis') {
           steps {
+                   sh 'sonar-scanner'
                    withSonarQubeEnv('SonarQube') {
-                        sh 'sonar-scanner'
+
                    }
 
 
