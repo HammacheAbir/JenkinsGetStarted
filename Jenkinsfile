@@ -28,7 +28,8 @@ pipeline {
               sh 'sonar-scanner'
              waitForQualityGate true
 
-        }
+                }
+             }
         stage('Test Reporting') {
           steps {
             jacoco(maximumBranchCoverage: '60')
