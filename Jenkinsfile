@@ -44,10 +44,10 @@ pipeline {
          stage('SonarQube analysis') {
              steps {
                script {
-                 // requires SonarQube Scanner 2.8+
+
                  scannerHome = tool 'SonarQube'
                }
-               withSonarQubeEnv('SonarQube') {
+               withSonarQubeEnv('SonareQube') {
                  sh "${scannerHome}/bin/sonar-scanner"
                }
              }
