@@ -1,0 +1,8 @@
+-classpath '/Users/macbook/Downloads/Matrix/build/classes/java/main:/Users/macbook/Downloads/Matrix/build/resources/main'
+-d '/Users/macbook/Downloads/Matrix/build/docs/javadoc'
+-doctitle 'Matrix 1.0 API'
+-quiet 
+-windowtitle 'Matrix 1.0 API'
+'/Users/macbook/Downloads/Matrix/src/main/java/model/Matrix.java'
+'/Users/macbook/Downloads/Matrix/src/main/java/service/MatrixMathematics.java'
+'/Users/macbook/Downloads/Matrix/src/main/java/exception/NoSquareException.java'

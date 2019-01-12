@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"model","l":"Matrix"},{"p":"service","l":"MatrixMathematics"},{"p":"exception","l":"NoSquareException"}]
