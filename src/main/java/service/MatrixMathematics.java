@@ -13,7 +13,7 @@ public class MatrixMathematics {
 	
 	/**
 	 * Determinant of a sqeeuarsdfe matrixx
-	 * The following function find test test the determinant in a recursively.
+	 * The following function find test test the dd ert determinant in a recursively.
 	 * @param matrix
 	 * @return
 	 * @throws NoSquareException
