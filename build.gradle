@@ -3,8 +3,6 @@ version '1.0'
 
 apply plugin: 'java'
 apply plugin: "jacoco"
-apply plugin: 'maven-publish'
-apply plugin: "com.alexleventer.slack"
 
 
 
@@ -66,33 +64,3 @@ jacocoTestCoverageVerification {
 
 jacocoTestReport.mustRunAfter test
 jacocoTestCoverageVerification.mustRunAfter test
-
-
-task copyTestReports(type:Copy){
-    from "build/reports/tests"
-    into "/Users/macbook/Desktop/MatrixRelease/matrix_v_${version}/TestReports"
-}
-
-task copyTestQualityReports(type:Copy){
-    from "build/reports/jacocoHtml"
-    into "/Users/macbook/Desktop/MatrixRelease/matrix_v_${version}/TestQualityReports"
-}
-
-task copyDoc(type:Copy){
-    from "build/docs/javadoc"
-    into "/Users/macbook/Desktop/MatrixRelease/matrix_v_${version}/Documentation"
-}
-
-task buildjar(type:Copy){
-    from "build/libs/matrix-${version}.jar"
-    into "/Users/macbook/Desktop/MatrixRelease/matrix_v_${version}/api"
-}
-
-task genereateMatrixApi
-
-
-
-
-buildjar.dependsOn jar
-genereateMatrixApi.dependsOn copyTestReports, copyTestQualityReports, copyDoc,buildjar
-build.dependsOn genereateMatrixApi
