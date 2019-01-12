@@ -7,26 +7,26 @@ pipeline {
         sh 'gradle build'
         sh 'gradle javadoc '
         archiveArtifacts 'build/libs/*.jar'
+        }
       }
 
-      post {
-      always {
-             echo "Build stage complete"
-            }
-      failure {
-          mail(subject: 'Repported changes',
-                                     body: 'Salam, some changes occured and the build failed',
-                                     from: 'fa_chenine@esi.dz',
-                                     to: 'chenineazeddine5@gmail.com')
-             }
-      success {
-                mail(subject: 'Repported changes',
-                           body: 'Salam, some changes occured and the build successeded',
-                           from: 'fa_chenine@esi.dz',
-                           to: 'chenineazeddine5@gmail.com')
-         }
-      }
-    }
+        post {
+                    always {
+                                  echo "Build stage complete"
+                            }
+                    failure {
+                                 mail(subject: 'Repported changes',
+                                                           body: 'Salam, some changes occured and the build failed',
+                                                           from: 'fa_chenine@esi.dz',
+                                                           to: 'chenineazeddine5@gmail.com')
+                            }
+                    success {
+                                      mail(subject: 'Repported changes',
+                                                 body: 'Salam, some changes occured and the build successeded',
+                                                 from: 'fa_chenine@esi.dz',
+                                                 to: 'chenineazeddine5@gmail.com')
+                            }
+                 }
 
 
     stage('Code analysis') {
