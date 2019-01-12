@@ -41,15 +41,17 @@ pipeline {
     }
 
 
-        stage('SonarQube analysis') {
-          script {
-                  // requires SonarQube Scanner 2.8+
-                  scannerHome = tool 'SonarQube Scanner 2.8'
-                }
-            withSonarQubeEnv('My SonarQube Server') {
-            sh "${scannerHome}/bin/sonar-scanner"
-            } // SonarQube taskId is automatically attached to the pipeline context
-          }
+         stage('SonarQube analysis') {
+             steps {
+               script {
+                 // requires SonarQube Scanner 2.8+
+                 scannerHome = tool 'SonarQube Scanner 2.8'
+               }
+               withSonarQubeEnv('SonarQube Scanner') {
+                 sh "${scannerHome}/bin/sonar-scanner"
+               }
+             }
+           }
 
 
 
