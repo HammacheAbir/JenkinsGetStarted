@@ -28,9 +28,9 @@ pipeline {
       parallel {
         stage('Code analysis') {
           steps {
-                   withSonarQubeEnv('My SonarQube Server') {
+
                        sh 'sonar-scanner'
-                      } // SonarQube taskId is automatically attached to the pipeline context
+
                 }
              }
 
