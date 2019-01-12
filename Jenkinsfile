@@ -29,12 +29,7 @@ pipeline {
               sh 'sonar-scanner'
             }
             waitForQualityGate true
-            def qualitygate = waitForQualityGate()
-            if (qualitygate.status != "OK") {
-                     error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-                   }
 
-          }
         }
         stage('Test Reporting') {
           steps {
