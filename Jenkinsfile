@@ -44,7 +44,6 @@ pipeline {
          stage('SonarQube analysis') {
              steps {
                script {
-
                    scannerHome = tool 'SonarQube Scanner 3.2'
                }
                withSonarQubeEnv('SonarQube Scanner 3.2') {
