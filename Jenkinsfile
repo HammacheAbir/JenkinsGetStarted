@@ -24,7 +24,6 @@ pipeline {
     stage('Code analysis') {
       parallel {
         stage('Code analysis') {
-          agent any
           steps {
                    withSonarQubeEnv('SonarQube') {
                         sh 'sonar-scanner'
