@@ -43,10 +43,6 @@ pipeline {
     }
 
 
-    stage('Quality Gate){
-           waitForQualityGate abortPipeline: true
-      }
-
     stage('Deployment') {
       steps {
         sh 'gradle uploadArchives'
