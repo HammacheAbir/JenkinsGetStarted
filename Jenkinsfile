@@ -23,25 +23,25 @@ pipeline {
 
          }
     }
+
     stage('Code analysis') {
       parallel {
         stage('Code analysis') {
           steps {
-
-           withSonarQubeEnv('My SonarQube Server') {
-               sh 'sonar-scanner'
-              } // SonarQube taskId is automatically attached to the pipeline context
-
+                   withSonarQubeEnv('My SonarQube Server') {
+                       sh 'sonar-scanner'
+                      } // SonarQube taskId is automatically attached to the pipeline context
                 }
              }
 
-    stage('Test Reporting') {
-          steps {
-            jacoco(maximumBranchCoverage: '60')
-          }
+        stage('Test Reporting') {
+              steps {
+                jacoco(maximumBranchCoverage: '60')
+              }
+            }
         }
-      }
     }
+
 
     stage("Quality Gate"){
       timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -49,12 +49,13 @@ pipeline {
         }
       }
 
-
     stage('Deployment') {
       steps {
         sh 'gradle uploadArchives'
       }
     }
+
+
     stage('slack notification') {
       steps {
         slackSend(message: 'Salam, Project deployed')
