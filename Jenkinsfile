@@ -43,10 +43,8 @@ pipeline {
     }
 
 
-    stage("Quality Gate"){
-      timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+    stage('Quality Gate){
            waitForQualityGate abortPipeline: true
-        }
       }
 
     stage('Deployment') {
