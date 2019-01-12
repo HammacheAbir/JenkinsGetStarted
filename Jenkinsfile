@@ -44,7 +44,7 @@ pipeline {
     }
     stage('slack notification') {
       steps {
-        slackSend(color: '#00FF00', message: 'Salam, Project deployed')
+        slackSend(message: 'Salam, Project deployed')
       }
     }
   }
