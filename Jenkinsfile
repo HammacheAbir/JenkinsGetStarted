@@ -20,7 +20,6 @@ pipeline {
            withSonarQubeEnv('SonarQube') {
             sh '''/Applications/sonarScanner/bin/sonar-scanner'''
             }
-            waitForQualityGate()
 
           }
         }
