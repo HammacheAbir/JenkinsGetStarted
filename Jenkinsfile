@@ -24,6 +24,7 @@ pipeline {
     stage('Code analysis') {
       parallel {
         stage('Code analysis') {
+          agent any
           steps {
                    withSonarQubeEnv('SonarQube') {
                         sh 'sonar-scanner'
@@ -32,13 +33,14 @@ pipeline {
 
                 }
              }
-        stage('Test Reporting') {
+    stage('Test Reporting') {
           steps {
             jacoco(maximumBranchCoverage: '60')
           }
         }
       }
     }
+
     stage('Deployment') {
       steps {
         sh 'gradle uploadArchives'
