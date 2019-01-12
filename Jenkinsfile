@@ -32,5 +32,10 @@ pipeline {
         sh 'gradle uploadArchives'
       }
     }
+    stage('slack notification') {
+      steps {
+        slackSend(attachments: 'hello', message: 'hello')
+      }
+    }
   }
 }
