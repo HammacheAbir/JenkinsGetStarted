@@ -17,10 +17,7 @@ pipeline {
       parallel {
         stage('Code analysis') {
           steps {
-           withSonarQubeEnv('SonarQube') {
-            sh '''/Applications/sonarScanner/bin/sonar-scanner'''
-            }
-
+           sh '''/Applications/sonarScanner/bin/sonar-scanner'''
           }
         }
         stage('Test Reporting') {
