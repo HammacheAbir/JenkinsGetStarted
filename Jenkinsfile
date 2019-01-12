@@ -26,7 +26,7 @@ pipeline {
         stage('Code analysis') {
           steps {
             withSonarQubeEnv('SonareQube') {
-              sh '/Applications/sonarScanner/bin/sonar-scanner'
+              sh 'sonar-scanner'
               waitForQualityGate true
             }
 
