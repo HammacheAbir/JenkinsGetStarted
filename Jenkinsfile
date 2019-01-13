@@ -18,7 +18,6 @@ pipeline {
 
               success {
                 mail(subject: 'Repported changes', body: 'Salam, some changes occured and the build successeded', from: 'fa_chenine@esi.dz', to: 'chenineazeddine5@gmail.com')
-
               }
 
          }
@@ -26,11 +25,20 @@ pipeline {
 
     stage('Code analysis') {
       parallel {
-        stage('Code analysis') {
-          steps {
-                       sh 'sonar-scanner'
-                }
-             }
+         stage('SonarQube analysis') {
+                    steps {
+                      script {
+                          scannerHome = tool 'SonarQube Scanner 3.2.0.1227'
+                      }
+                      withSonarQubeEnv('sonarqube') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                      }
+                        waitForQualityGate abortPipeline: true
+
+
+                    }
+                  }
+
 
         stage('Test Reporting') {
               steps {
@@ -41,16 +49,6 @@ pipeline {
     }
 
 
-         stage('SonarQube analysis') {
-             steps {
-               script {
-                   scannerHome = tool 'SonarQube Scanner 3.2.0.1227'
-               }
-               withSonarQubeEnv('SonarQube Scanner 3.2.0.1227') {
-                 sh "${scannerHome}/bin/sonar-scanner"
-               }
-             }
-           }
 
 
 
@@ -59,6 +57,9 @@ pipeline {
 
 
     stage('Deployment') {
+    when{
+        branch 'master'
+      }
       steps {
         sh 'gradle uploadArchives'
       }
@@ -66,8 +67,12 @@ pipeline {
 
 
     stage('slack notification') {
+     when{
+            branch 'master'
+          }
       steps {
         slackSend(message: 'Salam, Project deployed')
+
       }
     }
 
